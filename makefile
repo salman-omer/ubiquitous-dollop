@@ -1,11 +1,14 @@
 CC = gcc
 CFLAGS = -Wall
 
-TARGET = classroomSynchronization
+TARGET = classroomSynchronizationMutex
+TARGET2 = classroomSynchronizationSemaphore
 RM = rm
 
-all: $(TARGET)
+all: $(TARGET) $(TARGET2)
 
 $(TARGET): $(TARGET).c ; $(CC) $(CFLAGS) -o $(TARGET) $(TARGET).c -lpthread
 
-clean: ; $(RM) $(TARGET)  
+$(TARGET2): $(TARGET2).c ; $(CC) $(CFLAGS) -o $(TARGET2) $(TARGET2).c -lpthread -lrt
+
+clean: ; $(RM) $(TARGET); $(RM) $(TARGET2)   
